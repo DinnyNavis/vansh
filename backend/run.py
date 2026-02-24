@@ -6,18 +6,13 @@ load_dotenv()
 from app import create_app
 from app.extensions import socketio
 
+# Create Flask app
 app = create_app()
 
-if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))
-    # Use socketio.run for WebSocket support
-    print(f"Starting backend on port {port}...")
-    socketio.run(
-        app,
-        host="0.0.0.0",
-        port=port,
-        debug=True,
-        use_reloader=True,
-        allow_unsafe_werkzeug=True,
-        log_output=True,
-    )
+# Initialize SocketIO in threading mode (NO eventlet)
+socketio.init_app(app, async_mode="threading")
+
+# IMPORTANT:
+# Do NOT use socketio.run()
+# Gunicorn will start the server using:
+# gunicorn run:app --bind 0.0.0.0:$PORT --workers 1 --threads 2
