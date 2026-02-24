@@ -1,0 +1,62 @@
+# ============================================
+# VANSH Project - Root .gitignore
+# ============================================
+
+# --- Environment / Secrets ---
+.env
+*.env
+!.env.example
+
+# --- Python / Backend ---
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.py[cod]
+backend/*$py.class
+backend/*.egg-info/
+backend/.eggs/
+backend/venv/
+backend/env/
+backend/.venv/
+backend/dist/
+backend/build/
+backend/*.log
+backend/backend.log
+backend/backend_debug.log
+backend/backend_error.log
+backend/guardian_health.log
+backend/run_log.log
+backend/db_data/
+backend/uploads/
+
+# Debug / test scripts (optional - remove these lines if you want to keep them)
+backend/debug_*.py
+backend/diag_*.py
+backend/test_*.py
+backend/verify_*.py
+backend/check_*.py
+backend/benchmark_*.py
+backend/stress_test_*.py
+backend/cleanup_*.py
+backend/list_models.py
+backend/diagnose.py
+backend/results.json
+backend/*.txt
+backend/*.log
+
+# --- Node / Frontend ---
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+frontend/coverage/
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Misc ---
+file_list.txt
+found_files.txt

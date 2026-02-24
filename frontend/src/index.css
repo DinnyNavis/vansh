@@ -1,0 +1,321 @@
+@import "tailwindcss";
+
+@theme {
+    /* Colors — The Golden Legacy Palette */
+    --color-ivory: #FDFCF8;
+    --color-cream: #F7F5F0;
+    --color-gold: #C9A84C;
+    --color-gold-light: #E8D48B;
+    --color-gold-dark: #A68A3E;
+    --color-midnight: #1A1F2C;
+    --color-charcoal: #2D3436;
+    --color-warm-gray: #636E72;
+    --color-success: #27AE60;
+    --color-error: #E74C3C;
+
+    /* Font Families */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+    --font-accent: 'Outfit', sans-serif;
+
+    /* Shadows */
+    --shadow-gold: 0 10px 30px rgba(201, 168, 76, 0.2);
+    --shadow-gold-sm: 0 4px 15px rgba(201, 168, 76, 0.15);
+}
+
+/* ==============================
+   Base Styles
+   ============================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ==============================
+   Glassmorphism Components
+   ============================== */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+}
+
+.glass-dark {
+    background: rgba(26, 31, 44, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==============================
+   Buttons
+   ============================== */
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-midnight);
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    background: #2D3436;
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+    color: #fff;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold));
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--color-charcoal);
+    padding: 0.8rem 1.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================
+   Animations
+   ============================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-pulse-gold {
+    animation: pulseGold 2s infinite;
+}
+
+@keyframes pulseGold {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spinSlow 8s linear infinite;
+}
+
+/* ==============================
+   Book Page Styles (Workspace)
+   ============================== */
+
+/* ==============================
+   Book Page Styles (Workspace)
+   ============================== */
+
+.book-spread {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    perspective: 2000px;
+}
+
+.book-page {
+    background: #fff;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(253, 252, 248, 0.5) 0, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(201, 168, 76, 0.02) 0, transparent 50%);
+    box-shadow:
+        5px 5px 15px rgba(0, 0, 0, 0.05),
+        -1px 0 2px rgba(0, 0, 0, 0.05);
+    padding: 5rem 6rem;
+    border-radius: 2px 8px 8px 2px;
+    position: relative;
+    min-height: 800px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Paper Texture Overlay */
+.paper-texture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: multiply;
+}
+
+/* Gutter Effect */
+.book-gutter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.05) 20%,
+            rgba(0, 0, 0, 0.02) 40%,
+            transparent 100%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Premium Typography */
+.drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 0.75rem;
+    margin-top: 0.5rem;
+    color: var(--color-gold);
+    font-weight: 700;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.02);
+}
+
+.ornamental-hr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    opacity: 0.6;
+}
+
+.ornamental-hr::before,
+.ornamental-hr::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to var(--dir, right), var(--color-gold), transparent);
+}
+
+.ornamental-hr::after {
+    --dir: left;
+}
+
+.flourish {
+    font-family: 'serif';
+    color: var(--color-gold);
+    font-size: 1.5rem;
+}
+
+/* Cover Specifics */
+.book-cover {
+    background: var(--color-midnight);
+    color: var(--color-ivory);
+    border: 12px double var(--color-gold-dark);
+    outline: 2px solid var(--color-gold);
+    outline-offset: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem !important;
+}
+
+.book-cover h1 {
+    color: var(--color-gold-light);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.book-cover::after {
+    display: none;
+    /* No noise on cover maybe? */
+}
+
+/* ==============================
+   Custom Scrollbar
+   ============================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gold-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+}
