@@ -17,18 +17,29 @@ def create_app(config_name=None):
     # Ensure upload folder exists
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-    # CORS
-    origins = app.config.get(
-        "CORS_ORIGINS",
-        ["http://localhost:5173", "http://127.0.0.1:5173"],
+    # ✅ Production + Local Origins
+    origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://vansh-1-ds78.onrender.com",  # your frontend
+    ]
+
+    # Enable CORS for API routes
+    CORS(
+        app,
+        resources={r"/api/*": {"origins": origins}},
+        supports_credentials=True,
     )
-    CORS(app, resources={r"/api/*": {"origins": origins}}, supports_credentials=True)
 
-    # Initialize extensions (LIGHT ONLY)
+    # Initialize extensions
     jwt.init_app(app)
-    socketio.init_app(app, cors_allowed_origins=origins)
 
-    # Mongo (no blocking test connection)
+    socketio.init_app(
+        app,
+        cors_allowed_origins=origins,
+    )
+
+    # Mongo
     init_mongo(app.config["MONGODB_URI"], app.config["MONGODB_DB"])
 
     # Register blueprints
