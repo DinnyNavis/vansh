@@ -28,7 +28,7 @@ backend/run_log.log
 backend/db_data/
 backend/uploads/
 
-# Debug / test scripts (optional - remove these lines if you want to keep them)
+# Debug / test scripts (optional - remove if you want to keep them)
 backend/debug_*.py
 backend/diag_*.py
 backend/test_*.py
@@ -40,8 +40,30 @@ backend/cleanup_*.py
 backend/list_models.py
 backend/diagnose.py
 backend/results.json
-backend/*.txt
+# Specific generated txt files (NOT requirements.txt)
+backend/ai_test_results.txt
+backend/aihorde_test_results.txt
+backend/available_models.txt
+backend/backend_debug.log
+backend/backend_error.log
+backend/debug_log.txt
+backend/debug_log_v3.txt
+backend/full_model_info.txt
+backend/full_model_list.txt
+backend/hercai_test_results.txt
+backend/hf_test_results.txt
+backend/lexica_test_results.txt
+backend/model_list.txt
+backend/models.txt
+backend/pollinations_debug_results.txt
+backend/pollinations_model_test.txt
+backend/pollinations_test.txt
+backend/run_log.txt
+backend/test_multilingual_result.txt
+backend/test_output.txt
 backend/*.log
+backend/file_list.txt
+backend/found_files.txt
 
 # --- Node / Frontend ---
 frontend/node_modules/
